@@ -1,0 +1,50 @@
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+.coverage
+htmlcov/
+
+# Node / Marp
+node_modules/
+.npm/
+
+# LiteLLM / LLM caches
+.litellm/
+.cache/
+*.log
+
+# OS / editor
+.DS_Store
+.idea/
+*.swp
+
+# Local recordings (keep off git; stage backup stays on the speaker laptop)
+speaker/recordings/
+*.mov
+
+# Remotion intermediates — hall MP4s in speaker/videos/ are committed
+remotion/out/
+remotion/dist/
+
+# Agent / tool scratch
+agent-tools/
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore

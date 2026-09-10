@@ -1,0 +1,30 @@
+# LiteLLM proxy aliases for the talk.
+# Start:  ./scripts/start-litellm.sh
+# The heuristic `auto` path lives in demo/router.py — LiteLLM only exposes
+# the two backends. The CLI decides local vs cloud (and PII redaction).
+
+model_list:
+  - model_name: local
+    litellm_params:
+      model: ollama/qwen2.5:0.5b
+      api_base: http://localhost:11434
+    model_info:
+      id: ollama-qwen25-05b
+      mode: chat
+
+  - model_name: cloud
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/GEMINI_API_KEY
+    model_info:
+      id: gemini-3.6-flash
+      mode: chat
+
+# `auto` is not a third vendor model. Clients that want policy-based routing
+# should call the CLI (`python -m demo.router`) or POST through a wrapper
+# that runs the same heuristics. Documented here so the slide alias list
+# matches what you type on stage.
+
+litellm_settings:
+  drop_params: true
+  request_timeout: 90
